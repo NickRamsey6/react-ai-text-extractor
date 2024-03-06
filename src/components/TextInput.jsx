@@ -4,8 +4,20 @@ import { Textarea, Button, useToast } from "@chakra-ui/react";
 const TextInput = () => {
   const [text, setText] = useState('');
 
+  const toast = useToast();
+
   const submitText = ()=> {
-    console.log(text);
+    if (text === '') {
+        toast({
+            title: 'Text field is empty!',
+            description: 'Please enter some text to extract keywords',
+            status: 'error',
+            duration: 5000,
+            isClosable: false
+        });
+    } else {
+        console.log(text);
+    }
   };
 
   return (
